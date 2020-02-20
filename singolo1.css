@@ -115,14 +115,14 @@ img.slider__item:nth-child(3) {
 /* SERVICES */
 .services {
   max-height: 495px;
-  padding-top: 68px;
+  padding-top: 62px;
   padding-bottom: 29px;
   border-bottom: 6px solid #ffffff;
   background-color: #f2f2f2;
 }
 
 .services__title {
-  line-height: 18px;
+  line-height: 30px;
   font-size: 30px;
   font-weight: 900;
   color: #666d89;
@@ -131,7 +131,7 @@ img.slider__item:nth-child(3) {
 
 .services__desc {
   height: 57px;
-  padding-top: 27px;
+  padding-top: 21px;
   padding-bottom: 49px;
   line-height: 30px;
   font-size: 18px;
@@ -151,9 +151,11 @@ p.services__desc::first-line {
 }
 
 .service {
+  display: flex;
+  justify-content: space-between;
   width: 32%;
   max-width: 310px;
-  padding-bottom: 34px;
+  padding-bottom: 42px;
   margin-top: -1px;
 }
 
@@ -169,11 +171,11 @@ p.services__desc::first-line {
   line-height: 18px;
   color: #666d89;
   font-weight: 900;
+  letter-spacing: -0.1px;
 }
 
 .service-text {
   text-align: justify;
-  height: 128px;
   max-height: 54px;
   line-height: 22px;
   font-size: 12px;
@@ -184,5 +186,7 @@ p.services__desc::first-line {
 .service__icon {
   display: inline-block;
   vertical-align: top;
+  max-width: 62px;
+  max-height: 62px;
 }
 
