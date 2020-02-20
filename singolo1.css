@@ -36,7 +36,8 @@ body {
 }
 
 .header__navigation .navigation a:hover,
-.header__navigation .logo .star {
+.header__navigation .logo .star,
+.header__navigation .navigation li.active {
   color: #f06c64;
 }
 
@@ -62,6 +63,7 @@ body {
   padding-right: 13.5px;
   padding-left: 13.5px;
   content: "·";
+  color:#666d89;
 }
 
 .header__navigation .navigation li:last-child:after {
