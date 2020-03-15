@@ -72,6 +72,12 @@ body {
   content: "";
 }
 
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 /* SLIDER */
 .slider {
   position: relative;
