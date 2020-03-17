@@ -1,6 +1,5 @@
 const MENU = document.querySelector('.navigation');
 const TAGS = document.querySelector('.portfolio_tags');
-const HEADER = document.getElementById("header");
 
 window.onload = function() {
     //MENU
@@ -53,17 +52,3 @@ const randomMixImages = () => {
         }
     }
 };
-
-window.onscroll = function() {
-    fixHeaderOnScroll()
-};
-
-let sticky = HEADER.offsetTop;
-
-function fixHeaderOnScroll() {
-    if (window.pageYOffset > sticky) {
-        HEADER.classList.add("sticky-header");
-    } else {
-        HEADER.classList.remove("sticky-header");
-    }
-}
