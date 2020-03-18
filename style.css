@@ -305,10 +305,15 @@ p.services__desc::first-line {
 }
 
 .portfolio__item >* {
-  width: 100%;
-  height: auto;
-  max-width: 220px;
-  max-height: 187px;
+  width: 220px;
+  height: 187px;
+  cursor: pointer;
+}
+
+.image-bordered {
+  border: 5px solid #F06C64;
+  width: 210px;
+  height: 177px;
 }
 
 /* ABOUT US */

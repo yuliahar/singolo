@@ -1,15 +1,19 @@
 const MENU = document.querySelector('.navigation');
 const TAGS = document.querySelector('.portfolio_tags');
+const PORTFOLIO_IMAGES = document.querySelector('.portfolio__items');
 
 
 window.onload = function() {
     //MENU
     addMenuItemsClickHandler();
+    document.addEventListener('scroll', onScroll);
 
     //TAGS
     addTagsClickHandler();
 
-    document.addEventListener('scroll', onScroll);
+    //PORTFOLIO
+    addPortfolioImagesClickHandler();
+
 };
 
 const addMenuItemsClickHandler = () => {
@@ -21,13 +25,33 @@ const addMenuItemsClickHandler = () => {
     })
 };
 
+const onScroll = () => {
+    const currentPosition = window.scrollY + 95;
+    document.querySelectorAll('section').forEach((section) => {
+        if (section.offsetTop <= currentPosition && (section.offsetTop + section.offsetHeight) > currentPosition) {
+            MENU.querySelectorAll('li>a').forEach(menuItem => {
+                menuItem.parentNode.classList.remove('active');
+                if (section.getAttribute('class') === menuItem.getAttribute('href').substring(1)) {
+                    menuItem.parentNode.classList.add('active');
+                }
+            });
+        }
+    });
+};
+
 const addTagsClickHandler = () => {
     TAGS.addEventListener('click', (event) => {
-        let clickedTag = event.target;
+        const clickedTag = event.target;
+
+        if (!clickedTag) {
+            return;
+        }
+
         if (clickedTag.tagName === 'BUTTON') {
             removeSelectedTags();
             selectClickedTag(clickedTag);
             shuffleImages();
+            removeSelectedPortfolio();
         }
     })
 };
@@ -56,16 +80,33 @@ const shuffleImages = () => {
     }
 };
 
-const onScroll = () => {
-    const currentPosition = window.scrollY + 95;
-    document.querySelectorAll('section').forEach((section) => {
-        if (section.offsetTop <= currentPosition && (section.offsetTop + section.offsetHeight) > currentPosition) {
-            MENU.querySelectorAll('li>a').forEach(menuItem => {
-                menuItem.parentNode.classList.remove('active');
-                if (section.getAttribute('class') === menuItem.getAttribute('href').substring(1)) {
-                   menuItem.parentNode.classList.add('active');
-                }
-            });
+const addPortfolioImagesClickHandler = () => {
+    PORTFOLIO_IMAGES.addEventListener('click', (event) => {
+        const clickedImage = event.target;//.closest('.portfolio__item');
+
+        if (!clickedImage) {
+            return;
         }
-    });
+
+        if (clickedImage.tagName === 'IMG') {
+            const current = PORTFOLIO_IMAGES.querySelector('.image-bordered');
+
+
+            if (current) {
+                current.classList.remove('image-bordered');
+            }
+
+            if (current !== clickedImage) {
+                clickedImage.classList.add('image-bordered');
+            }
+        }
+    })
+};
+
+const removeSelectedPortfolio = () => {
+    const current = document.querySelector('.portfolio .image-bordered');
+
+    if (current) {
+        current.classList.remove('image-bordered');
+    }
 };
