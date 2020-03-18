@@ -8,12 +8,14 @@ window.onload = function() {
     addMenuItemsClickHandler();
     document.addEventListener('scroll', onScroll);
 
-    //TAGS
+    //PORTFOLIO TAGS
     addTagsClickHandler();
 
-    //PORTFOLIO
+    //PORTFOLIO IMAGES
     addPortfolioImagesClickHandler();
 
+    //QUOTE FORM
+    addQuoteFormHandler();
 };
 
 const addMenuItemsClickHandler = () => {
@@ -109,4 +111,22 @@ const removeSelectedPortfolio = () => {
     if (current) {
         current.classList.remove('image-bordered');
     }
+};
+
+const addQuoteFormHandler = () => {
+    const form = document.querySelector('.quote form');
+    console.log(form);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const message = [
+            `The letter was sent`,
+            form.subject.value ? `Subject: ${form.subject.value}` : 'No subject',
+            form.description.value ? `Description: ${form.description.value}` : 'No description'
+        ].join('\n');
+
+        alert(message);
+        form.reset();
+    });
 };
