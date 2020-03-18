@@ -1,12 +1,15 @@
 const MENU = document.querySelector('.navigation');
 const TAGS = document.querySelector('.portfolio_tags');
 
+
 window.onload = function() {
     //MENU
     addMenuItemsClickHandler();
 
     //TAGS
     addTagsClickHandler();
+
+    document.addEventListener('scroll', onScroll);
 };
 
 const addMenuItemsClickHandler = () => {
@@ -24,7 +27,7 @@ const addTagsClickHandler = () => {
         if (clickedTag.tagName === 'BUTTON') {
             removeSelectedTags();
             selectClickedTag(clickedTag);
-            randomMixImages();
+            shuffleImages();
         }
     })
 };
@@ -38,7 +41,7 @@ const selectClickedTag = (clickedTag) => {
     clickedTag.classList.add("tag_selected");
 };
 
-const randomMixImages = () => {
+const shuffleImages = () => {
     let images = document.querySelectorAll('.portfolio__item');
     let random = Math.round(Math.random() * (images.length - 1));
     for (let i = 0; i < images.length; i++) {
@@ -51,4 +54,18 @@ const randomMixImages = () => {
                 (random + i + 1) +'.png');
         }
     }
+};
+
+const onScroll = () => {
+    const currentPosition = window.scrollY + 95;
+    document.querySelectorAll('section').forEach((section) => {
+        if (section.offsetTop <= currentPosition && (section.offsetTop + section.offsetHeight) > currentPosition) {
+            MENU.querySelectorAll('li>a').forEach(menuItem => {
+                menuItem.parentNode.classList.remove('active');
+                if (section.getAttribute('class') === menuItem.getAttribute('href').substring(1)) {
+                   menuItem.parentNode.classList.add('active');
+                }
+            });
+        }
+    });
 };
